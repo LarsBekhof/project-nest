@@ -8,3 +8,15 @@ export class LoginInput {
 	@Field()
 	public password: string;
 }
+
+@InputType()
+export class RegisterInput {
+	@Field()
+	public email: string;
+
+	@Field()
+	public password: string;
+
+	@Field()
+	public passwordConfirm: string;
+}

@@ -8,9 +8,20 @@ input LoginInput {
   password: String!
 }
 
+type Mutation {
+  register(input: RegisterInput!): User!
+}
+
 type Query {
+  currentUser: User
   user(input: UserInput!): User
   login(input: LoginInput!): User!
+}
+
+input RegisterInput {
+  email: String!
+  password: String!
+  passwordConfirm: String!
 }
 
 type User {

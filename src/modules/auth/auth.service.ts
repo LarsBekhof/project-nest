@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@nestjs/common';
-import bcrypt from 'bcrypt';
+import * as bcrypt from 'bcrypt';
 
 import { UserService } from '../user/user.service';
 import { User } from '../user/user.entity';
@@ -8,13 +8,21 @@ import { User } from '../user/user.entity';
 export class AuthService {
 	@Inject(UserService) private readonly userService: UserService;
 
-	async validateUser(email: string, password: string): Promise<User | null> {
+	public async validateUser(email: string, password: string): Promise<User | undefined> {
 		const user = await this.userService.findByEmail(email);
 
-		if (user && bcrypt.compareSync(password, user.password)) {
-			return user;
-		}
+		return new Promise((resolve, reject) => {
+			if(user && bcrypt.compareSync(password, user.password)) {
+				resolve(user);
+			} else {
+				reject();
+			}
+		});
+	}
 
-		return null;
+	public registerUser(email, password): Promise<User> {
+		return this.userService.repository.save(
+			this.userService.repository.create({ email, password: bcrypt.hashSync(password, 10) }),
+		);
 	}
 }
