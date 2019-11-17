@@ -14,9 +14,7 @@ import { AuthModule } from '../auth/auth.module';
 			username: 'root',
 			password: 'password',
 			database: 'database',
-			entities: [
-				'dist/**/*.entity{.ts,.js}',
-			],
+			entities: ['dist/**/*.entity{.ts,.js}'],
 			synchronize: true,
 		}),
 		GraphQLModule.forRoot({
@@ -24,6 +22,7 @@ import { AuthModule } from '../auth/auth.module';
 			playground: true,
 			autoSchemaFile: 'schema.gql',
 			installSubscriptionHandlers: true,
+			context: ({ req }) => ({ req }),
 		}),
 		UserModule,
 		AuthModule,

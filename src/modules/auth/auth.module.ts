@@ -5,16 +5,11 @@ import { UserModule } from '../user/user.module';
 import { AuthResolver } from './auth.resolver';
 import { PassportModule } from '@nestjs/passport';
 import { LocalStrategy } from './local.strategy';
+import { GqlAuthGuard } from './auth.guard';
 
 @Module({
-	imports: [
-		UserModule,
-		PassportModule,
-	],
-	providers: [
-		AuthService,
-		AuthResolver,
-		LocalStrategy,
-	],
+	imports: [UserModule, PassportModule.register({ session: true })],
+	providers: [AuthService, AuthResolver, LocalStrategy],
+	exports: [GqlAuthGuard],
 })
 export class AuthModule {}

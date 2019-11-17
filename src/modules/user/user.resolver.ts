@@ -1,11 +1,5 @@
-import {
-	Inject,
-} from '@nestjs/common';
-import {
-	Resolver,
-	Query,
-	Args,
-} from '@nestjs/graphql';
+import { Inject } from '@nestjs/common';
+import { Resolver, Query, Args } from '@nestjs/graphql';
 
 import { UserService } from './user.service';
 import { User } from './user.entity';
@@ -20,7 +14,8 @@ export class UserResolver {
 		@Args({
 			name: 'input',
 			type: () => UserInput,
-		}) input: UserInput,
+		})
+		input: UserInput,
 	) {
 		return this.userService.find(input.id);
 	}

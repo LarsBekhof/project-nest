@@ -1,6 +1,5 @@
 {
 	"defaultSeverity": "error",
-	"extends": ["tslint:recommended"],
 	"jsRules": {
 		"no-unused-expression": true
 	},
@@ -8,14 +7,69 @@
 		"quotemark": [true, "single"],
 		"member-access": [false],
 		"ordered-imports": [false],
-		"max-line-length": [true, 150],
+		"no-irregular-whitespace": true,
 		"member-ordering": [false],
-		"interface-name": [false],
-		"arrow-parens": false,
-		"object-literal-sort-keys": false,
-		"indent": "tabs",
-		"experimentalDecorators": true,
-		"no-unused-variable": true
+		"new-parens": true,
+		"object-literal-shorthand": true,
+		"object-literal-key-quotes": [true, "consistent-as-needed"],
+		"no-unnecessary-qualifier": true,
+		"increment-decrement": true,
+		"arrow-return-shorthand": [true, "multiline"],
+		"cyclomatic-complexity": [true, 20],
+		"no-require-imports": true,
+		"no-default-export": true,
+		"no-duplicate-imports": true,
+		"prefer-const": true,
+		"prefer-template": true,
+		"no-boolean-literal-compare": true,
+		"no-unnecessary-initializer": true,
+		"no-mergeable-namespace": true,
+		"deprecation": true,
+		"class-name": true,
+		"no-consecutive-blank-lines": true,
+		"semicolon": [true, "always"],
+		"trailing-comma": [true, {"multiline": "always", "singleline": "never"}],
+		"max-line-length": [true, 150],
+		"align": [true, "parameters", "statements", "arguments", "members", "elements"],
+		"indent": [true, "tabs", 2],
+		"whitespace": [
+			"check-branch",
+			"check-decl",
+			"check-operator",
+			"check-module",
+			"check-separator",
+			"check-rest-spread",
+			"check-type",
+			"check-typecast",
+			"check-type-operator",
+			"check-preblock",
+			"check-postbrace"
+		],
+		"typedef-whitespace": [
+			true,
+			{
+				"call-signature": "nospace",
+				"index-signature": "nospace",
+				"parameter": "nospace",
+				"property-declaration": "nospace",
+				"variable-declaration": "nospace"
+			},
+			{
+				"call-signature": "onespace",
+				"index-signature": "onespace",
+				"parameter": "onespace",
+				"property-declaration": "onespace",
+				"variable-declaration": "onespace"
+			}
+		],
+		"variable-name": {
+			"options": [
+				"ban-keywords",
+				"check-format",
+				"allow-leading-underscore",
+				"allow-pascal-case"
+			]
+		}
 	},
 	"rulesDirectory": []
 }

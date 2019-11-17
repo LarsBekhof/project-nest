@@ -1,21 +1,9 @@
-import {
-	Inject,
-} from '@nestjs/common';
-import {
-	Resolver,
-	Query,
-	Args,
-} from '@nestjs/graphql';
+import { Inject } from '@nestjs/common';
+import { Resolver, Query, Args } from '@nestjs/graphql';
 
-import {
-	AuthService,
-} from './auth.service';
-import {
-	LoginInput,
-} from './inputs';
-import {
-	User,
-} from '../user/user.entity';
+import { AuthService } from './auth.service';
+import { LoginInput } from './inputs';
+import { User } from '../user/user.entity';
 
 @Resolver('Auth')
 export class AuthResolver {
@@ -26,9 +14,9 @@ export class AuthResolver {
 		@Args({
 			name: 'input',
 			type: () => LoginInput,
-		}) input: LoginInput,
+		})
+		input: LoginInput,
 	) {
 		return this.authService.validateUser(input.email, input.password);
 	}
-
 }

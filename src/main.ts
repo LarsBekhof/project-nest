@@ -11,7 +11,10 @@ async function bootstrap() {
 		const app = await NestFactory.create(AppModule);
 		await app.listen(process.env.PORT || 3000);
 
-		Logger.log(`NestJS running on localhost:${process.env.PORT}`);
+		Logger.log(`NestJS running on http://localhost:${process.env.PORT}`);
+		Logger.log(
+			`Playground running on http://localhost:${process.env.PORT}/graphql`,
+		);
 	} catch (error) {
 		Logger.error(error);
 	}
